@@ -1,7 +1,7 @@
 # HannPoke-Api
 
 ## DESCRIPTION
-This is my personal `POKEMON GYM`, where all the battles are 1vs1 type, you can face your pokemon and see according to its type, if it wins or loses.
+This is my personal pokemon gym, where all the battles are 1vs1 type, you can face your pokemon and see according to its type, if it wins or loses.
 
 ### HOW TO RUN IT...
 Be sure that you have you NodeJs env Installed, FMI visit [nodejs.org](https://nodejs.org/es/).
