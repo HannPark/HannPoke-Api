@@ -39,6 +39,9 @@ and with PokeNames:
 GET - localhost:3000/v1/fight?poke1=bulbasaur&poke2=charmeleon
 ```
 
+This is an example of a POSTMAN's Response:
+![](img/response.png)
+
 ### DISCLAIMER
 - In order to get the data of the existing 898 pokemon, this API consumes the data coming from [pokeapi.co](https://pokeapi.co/).
 - This API keeps track of all queried fights in a public [Mongo Atlas](https://www.mongodb.com/atlas/database), because I just like it.
