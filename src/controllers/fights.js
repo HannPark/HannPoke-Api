@@ -1,25 +1,5 @@
-/* eslint-disable no-await-in-loop */
-const axios = require("axios");
-// const pokemonFights = require("../models/fightsModel");
-
-const apiCallData = async (pokeName) => {
-  console.log("APICALLDATA");
-  const pokeData = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokeName}`);
-  return pokeData;
-};
-
-const apiCallType = async (type) => {
-  console.log("APICALLTYPE");
-  const pokeType = await axios.get(`https://pokeapi.co/api/v2/type/${type}`);
-  return pokeType;
-};
-
-const mappingDamage = async (data, array) => {
-  for (let i = 0; i < data.length; i += 1) {
-    const arrData = await apiCallType(data[i]);
-    array.push(arrData.data.damage_relations);
-  }
-};
+const pokemonFights = require("../models/fightsModel");
+const { apiCallData, mappingDamage, damageCalc } = require("../functions/pokeFunctions");
 
 exports.fightResult = async (req, res, next) => {
   try {
@@ -36,26 +16,47 @@ exports.fightResult = async (req, res, next) => {
     await mappingDamage(typeArr1, damageArr1);
     await mappingDamage(typeArr2, damageArr2);
 
-    console.log("DAMAGE1: ", damageArr1);
-    console.log("DAMAGE2: ", damageArr2);
-    console.log("tipos 1: ", typeArr1);
-    console.log("tipos 2: ", typeArr2);
+    // Calculating Damage Advanges
+    const adv1 = damageCalc(typeArr1, damageArr1, typeArr2);
+    const adv2 = damageCalc(typeArr2, damageArr2, typeArr1);
 
-    // let contador1 = 0;
-    // let contador2 = 0;
-    typeArr1.forEach((val1, index1) => {
-      typeArr2.forEach((val2) => {
-        console.log(`Se compara tipo ${val1} con tipo ${val2}`);
-        const check = damageArr1[index1].double_damage_from.some((val) => val.name === val2);
-        console.log("CHECK: ", check);
-        if (check) {
-          console.log("Hay Doble Damage FROM");
-        }
-      });
-    });
+    let winner = "";
 
-    res.status(200).json({ poke1: damageArr1, poke2: damageArr2 });
+    if (adv1 === adv2) {
+      winner = "Es un EMPATE";
+    } else if (adv1 > adv2) {
+      winner = `El ganador es ${pokeData1.data.name}`;
+    } else {
+      winner = `El ganador es ${pokeData2.data.name}`;
+    }
+
+    const fight = {
+      pokemon1: {
+        name: pokeData1.data.name,
+        types: typeArr1,
+        score: adv1,
+      },
+      pokemon2: {
+        name: pokeData2.data.name,
+        types: typeArr2,
+        score: adv2,
+      },
+      winner,
+    };
+
+    req.fight = fight;
+    next();
   } catch (err) {
     res.status(503).send("Error generando simulacion de pelea");
+  }
+};
+
+exports.saveFight = async (req, res) => {
+  const data = req.fight;
+  try {
+    await pokemonFights.create(data);
+    res.status(200).json(data);
+  } catch (error) {
+    res.status(503).send(error);
   }
 };

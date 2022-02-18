@@ -3,11 +3,13 @@ const mongoose = require("mongoose");
 const FightsSchema = new mongoose.Schema({
   pokemon1: {
     name: String,
-    type: String,
+    types: [{ type: String }],
+    score: Number,
   },
   pokemon2: {
     name: String,
-    type: String,
+    types: [{ type: String }],
+    score: Number,
   },
   winner: String,
 });

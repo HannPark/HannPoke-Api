@@ -2,9 +2,9 @@ const express = require("express");
 
 const ruta = express.Router();
 
-const { fightResult } = require("../controllers/fights");
+const { fightResult, saveFight } = require("../controllers/fights");
 
 ruta.route("/")
-  .get(fightResult);
+  .get(fightResult, saveFight);
 
 module.exports = ruta;
