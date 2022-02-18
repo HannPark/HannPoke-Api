@@ -40,6 +40,7 @@ GET - localhost:3000/v1/fight?poke1=bulbasaur&poke2=charmeleon
 ```
 
 This is an example of a POSTMAN's Response:
+
 ![](img/response.png)
 
 ### DISCLAIMER
