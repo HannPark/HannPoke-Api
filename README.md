@@ -1,7 +1,7 @@
 # HannPoke-Api
 
 ## DESCRIPTION
-This is my personal `POKEMON GYM`, where all the battles are 1vs1 type, you can face your pokemon and see according to its type, if it wins or loses.
+This is my personal `POKEMON GYM`, where all the battles are 1vs1 type, you can face your pokemons and see according to its type, if it wins or loses.
 
 ### HOW TO RUN IT...
 Be sure that you have you NodeJs env Installed, FMI visit [nodejs.org](https://nodejs.org/es/).
@@ -44,7 +44,7 @@ This is an example of a POSTMAN's Response:
 ![](img/response.png)
 
 ### DISCLAIMER
-- In order to get the data of the existing 898 pokemon, this API consumes the data coming from [pokeapi.co](https://pokeapi.co/).
+- In order to get the data of the existing 898 pokemons, this API consumes the data coming from [pokeapi.co](https://pokeapi.co/).
 - This API keeps track of all queried fights in a public [Mongo Atlas](https://www.mongodb.com/atlas/database), because I just like it.
 
 ### License
