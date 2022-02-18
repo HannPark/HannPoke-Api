@@ -1,0 +1,28 @@
+{
+  "name": "hannpoke-api",
+  "version": "1.0.0",
+  "description": "Api que resuelve el ganador entre una batalla pokemon uno a uno",
+  "main": "index.js",
+  "scripts": {
+    "start": "set NODE_ENV=production && node index",
+    "dev": "nodemon index",
+    "lint": "eslint .  --ext .js",
+    "lint-fix": "eslint . --ext .js --fix"
+  },
+  "author": "Jose Luis Ojeda",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2",
+    "mongoose": "^6.1.3",
+    "morgan": "^1.10.0",
+    "node-fetch": "^3.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.9.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4",
+    "nodemon": "^2.0.15"
+  }
+}
