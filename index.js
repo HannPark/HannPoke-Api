@@ -24,7 +24,7 @@ if (process.env.NODE_ENV === "development") {
 // Rutas de Backend
 app.use("/v1/fight", fightRoute);
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 const server = app.listen(
   PORT,
   console.log("Servidor se ejecuta en ambiente", process.env.NODE_ENV),
