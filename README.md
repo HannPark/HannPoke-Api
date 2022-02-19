@@ -11,17 +11,20 @@ OPEN YOUR `CLI` ON A NEW FOLDER AND...
 - Clone the Repo
 
 ```
-$ git clone https://github.com/HannPark/HannPoke-Api.git
+git clone https://github.com/HannPark/HannPoke-Api.git 
 ```
-
+- Get into the folder
+```
+cd HannPoke-Api
+```
 - Install dependencies
 ```
-$ npm install
+npm install
 ```
 
-and RUN IT
+- and RUN IT
 ```
-$ npm start
+npm start
 ```
 ### HOW TO USE IT...
 
