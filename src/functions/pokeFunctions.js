@@ -22,7 +22,7 @@ exports.damageCalc = (pokeTypes1, damageArr1, pokeTypes2) => {
   let cont = 0;
   const damArr = [];
 
-  pokeTypes1.forEach(async (val1, index1) => {
+  pokeTypes1.forEach((val1, index1) => {
     pokeTypes2.forEach((val2) => {
       // Checking Damages
       const checkDDF = damageArr1[index1].double_damage_from.some((val) => val.name === val2);

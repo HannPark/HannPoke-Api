@@ -4,7 +4,7 @@
   "description": "Api que resuelve el ganador entre una batalla pokemon uno a uno",
   "main": "index.js",
   "scripts": {
-    "start": "set NODE_ENV=production && node index",
+    "start": "set NODE_ENV=produccion && node index",
     "dev": "nodemon index",
     "lint": "eslint .  --ext .js",
     "lint-fix": "eslint . --ext .js --fix"
