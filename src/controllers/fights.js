@@ -22,9 +22,9 @@ exports.fightResult = async (req, res, next) => {
 
     let winner = "";
 
-    if (adv1 === adv2) {
+    if (adv1.cont === adv2.cont) {
       winner = "Es un EMPATE";
-    } else if (adv1 > adv2) {
+    } else if (adv1.cont > adv2.cont) {
       winner = `El ganador es ${pokeData1.data.name}`;
     } else {
       winner = `El ganador es ${pokeData2.data.name}`;
@@ -34,12 +34,14 @@ exports.fightResult = async (req, res, next) => {
       pokemon1: {
         name: pokeData1.data.name,
         types: typeArr1,
-        score: adv1,
+        damage_relations: adv1.damage_relations,
+        score: adv1.cont,
       },
       pokemon2: {
         name: pokeData2.data.name,
         types: typeArr2,
-        score: adv2,
+        damage_relations: adv2.damage_relations,
+        score: adv2.cont,
       },
       winner,
     };
