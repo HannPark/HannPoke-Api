@@ -59,6 +59,6 @@ exports.saveFight = async (req, res) => {
     await pokemonFights.create(data);
     res.status(200).json(data);
   } catch (error) {
-    res.status(503).send(error);
+    res.status(503).send("No se pudo almacenar el registro de la batalla: ", error);
   }
 };
