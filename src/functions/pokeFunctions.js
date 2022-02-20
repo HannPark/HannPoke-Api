@@ -1,4 +1,3 @@
-/* eslint-disable no-await-in-loop */
 const axios = require("axios");
 
 exports.apiCallData = async (pokeName) => {
@@ -8,14 +7,17 @@ exports.apiCallData = async (pokeName) => {
 
 const apiCallType = async (type) => {
   const pokeType = await axios.get(`https://pokeapi.co/api/v2/type/${type}`);
-  return pokeType;
+  return pokeType.data.damage_relations;
 };
 
-exports.mappingDamage = async (data, array) => {
+exports.mappingDamage = async (data) => {
+  const array = [];
   for (let i = 0; i < data.length; i += 1) {
-    const arrData = await apiCallType(data[i]);
-    array.push(arrData.data.damage_relations);
+    const arrData = Promise.resolve(apiCallType(data[i]));
+    array.push(arrData);
   }
+  const mapped = await Promise.all(array);
+  return mapped;
 };
 
 exports.damageCalc = (pokeTypes1, damageArr1, pokeTypes2) => {

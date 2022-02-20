@@ -11,10 +11,8 @@ exports.fightResult = async (req, res, next) => {
     const typeArr1 = pokeData1.data.types.map((val) => val.type.name);
     const typeArr2 = pokeData2.data.types.map((val) => val.type.name);
 
-    const damageArr1 = [];
-    const damageArr2 = [];
-    await mappingDamage(typeArr1, damageArr1);
-    await mappingDamage(typeArr2, damageArr2);
+    const damageArr1 = await mappingDamage(typeArr1);
+    const damageArr2 = await mappingDamage(typeArr2);
 
     // Calculating Damage Advanges
     const adv1 = damageCalc(typeArr1, damageArr1, typeArr2);
